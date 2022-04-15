@@ -1,4 +1,4 @@
-# ACM AI Projects Skeleton Code
+# ACM AI Projects——Cassava Leaf Disease Classification
 
 ## Setup
 
