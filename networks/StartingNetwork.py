@@ -45,6 +45,3 @@ input = torch.randn(16, 3, 224, 224)
 output = test(input)
 print(output.size())
 '''
-
-model = StartingNetwork()
-print(model)
