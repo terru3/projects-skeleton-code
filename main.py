@@ -1,17 +1,18 @@
 import os
-
 import constants
-from data.StartingDataset import StartingDataset
-from networks.StartingNetwork import StartingNetwork
-from train_functions.starting_train import starting_train
+import matplotlib.pyplot as plt
+import torch
+import torch.nn as nn
+from StartingDataset import StartingDataset
+from StartingNetwork import StartingNetwork
+from starting_train import starting_train
 
 
 def main():
     # Get command line arguments
     hyperparameters = {"epochs": constants.EPOCHS, "batch_size": constants.BATCH_SIZE}
 
-    # TODO: Add GPU support. This line of code might be helpful.
-    # device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
     print("Epochs:", constants.EPOCHS)
     print("Batch size:", constants.BATCH_SIZE)
@@ -26,8 +27,10 @@ def main():
         model=model,
         hyperparameters=hyperparameters,
         n_eval=constants.N_EVAL,
+        device=device,
     )
 
+# classes = ['plane', 'car', 'bird', 'cat', 'deer', 'dog', 'frog', 'horse', 'ship', 'truck']
 
 if __name__ == "__main__":
     main()
