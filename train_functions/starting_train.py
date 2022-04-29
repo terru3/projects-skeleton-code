@@ -74,7 +74,7 @@ def starting_train(train_dataset, val_dataset, model, hyperparameters, n_eval, d
             step += 1
             """""
 
-        print('Epoch: ', epoch, 'Loss: ', loss.item())  # print loss of the last batch for each epoch
+        print('Epoch: ', epoch + 1, 'Loss: ', loss.item())  # print loss of the last batch for each epoch
 
 
 def evaluate(val_loader, model, loss_fn, device):
@@ -99,4 +99,3 @@ def evaluate(val_loader, model, loss_fn, device):
         correct_num += (predictions == labels).sum().item()
 
     print("Accuracy: ", 100*(correct_num / len(labels)), "%")
-
