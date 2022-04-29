@@ -17,16 +17,14 @@ def main():
     print("Epochs:", constants.EPOCHS)
     print("Batch size:", constants.BATCH_SIZE)
 
-    # Initalize dataset and model. Then train the model!
-    # train_dataset = StartingDataset()
-    # val_dataset = StartingDataset()
-
+    # Initalize train and validation datasets
     dataset = StartingDataset()
     train_size = int(0.8 * len(dataset))
     val_size = len(dataset) - train_size
     train_dataset, val_dataset = torch.utils.data.random_split(dataset, [train_size, val_size])
     # this may not yield balanced number of images from each class, however
 
+    # Initialize, train and evaluate model
     model = StartingNetwork()
     starting_train(
         train_dataset=train_dataset,
