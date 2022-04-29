@@ -16,6 +16,9 @@ class StartingNetwork(torch.nn.Module):
         self.pool4 = nn.MaxPool2d(2, 2)
         self.flatten = nn.Flatten()
         self.fc1 = nn.Linear(2400, 5)
+        # self.bn = nn.BatchNorm2d(???)
+        # to-do: calculate input size after pooling after each layer, pass as parameter
+        # then add to forward (at the end after pooling)
         self.relu = nn.ReLU()
 
     def forward(self, x):
