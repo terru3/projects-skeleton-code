@@ -34,15 +34,5 @@ def main():
         device=device,
     )
 
-# Visualises sample images with their predicted and actual labels
-classes = ["Cassava Bacterial Blight (CBB)", "Cassava Brown Streak Disease (CBSD)",
-           "Cassava Green Mottle (CGM)", "Cassava Mosaic Disease (CMD)",
-           "Healthy"]
-# for i in range(2):
-#     # print("Prediction: ") #smth like classes[predictions[i]]
-#     # print("Label: ") #smth like classes[labels[i]]
-#     # smth like plt.imshow (images[i].permute(1,2,0)) (may need .cpu())
-#     # plt.show()
-
 if __name__ == "__main__":
     main()
