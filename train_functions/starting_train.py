@@ -93,6 +93,7 @@ def evaluate(val_loader, model, loss_fn, device):
     model.eval()
 
     correct_num = 0
+    total_num = 0
     for batch in val_loader:
         images, labels = batch
 
@@ -103,9 +104,6 @@ def evaluate(val_loader, model, loss_fn, device):
         predictions = model(images).argmax(axis=1)
   # output has row number of batch_size, and col number 1 (reduced from 5)
         correct_num += (predictions == labels).sum().item()
-
-        # accuracy wrong, displahys ~11112%
-
-    print(correct_num)
-    print(len(labels))
-    print("Accuracy: ", 100*(correct_num / len(labels)), "%")
+        total_num += len(labels)
+        
+    print("Accuracy: ", 100*(correct_num / total_num), "%")
