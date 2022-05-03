@@ -4,8 +4,8 @@ import torch.nn as nn
 import torch.optim as optim
 from tqdm import tqdm
 
-from StartingDataset import StartingDataset
-from StartingNetwork import StartingNetwork
+from data.StartingDataset import StartingDataset
+from networks.StartingNetwork import StartingNetwork
 
 def starting_train(train_dataset, val_dataset, model, hyperparameters, n_eval, device):
     """
