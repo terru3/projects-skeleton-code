@@ -7,7 +7,6 @@ from StartingDataset import StartingDataset
 from StartingNetwork import StartingNetwork
 from starting_train import starting_train
 
-
 def main():
     # Get command line arguments
     hyperparameters = {"epochs": constants.EPOCHS, "batch_size": constants.BATCH_SIZE}
@@ -40,10 +39,10 @@ classes = ["Cassava Bacterial Blight (CBB)", "Cassava Brown Streak Disease (CBSD
            "Cassava Green Mottle (CGM)", "Cassava Mosaic Disease (CMD)",
            "Healthy"]
 # for i in range(2):
-    # print("Prediction: ") #smth like classes[predictions[i]]
-    # print("Label: ") #smth like classes[labels[i]]
-    # smth like plt.imshow (images[i].permute(1,2,0)) (may need .cpu())
-    # plt.show()
+#     # print("Prediction: ") #smth like classes[predictions[i]]
+#     # print("Label: ") #smth like classes[labels[i]]
+#     # smth like plt.imshow (images[i].permute(1,2,0)) (may need .cpu())
+#     # plt.show()
 
 if __name__ == "__main__":
     main()
