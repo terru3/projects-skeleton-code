@@ -103,6 +103,9 @@ def evaluate(val_loader, model, loss_fn, device):
         predictions = model(images).argmax(axis=1)
   # output has row number of batch_size, and col number 1 (reduced from 5)
         correct_num += (predictions == labels).sum().item()
-        # accuracy wrong, displays ~11245%
 
+        # accuracy wrong, displahys ~11112%
+
+    print(correct_num)
+    print(len(labels))
     print("Accuracy: ", 100*(correct_num / len(labels)), "%")
