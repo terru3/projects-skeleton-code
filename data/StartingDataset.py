@@ -11,7 +11,7 @@ class StartingDataset(torch.utils.data.Dataset):
         real image directory
     """
 
-    def __init__(self, image_dir = "/train_images", csv_dir = "."):
+    def __init__(self, image_dir = "../train_images", csv_dir = ".."):
         self.train_csv = pd.read_csv(csv_dir + "/train.csv")
         self.image_dir = image_dir
 
