@@ -107,3 +107,14 @@ def evaluate(val_loader, model, loss_fn, device):
         total_num += len(labels)
         
     print("Accuracy: ", 100*(correct_num / total_num), "%")
+    
+    # Visualises sample images with their predicted and actual labels
+    classes = ["Cassava Bacterial Blight (CBB)", "Cassava Brown Streak Disease (CBSD)",
+               "Cassava Green Mottle (CGM)", "Cassava Mosaic Disease (CMD)",
+               "Healthy"]
+    # for i in range(2):
+    #     # print("Prediction: ") #smth like classes[predictions[i]]
+    #     # print("Label: ") #smth like classes[labels[i]]
+    #     # smth like plt.imshow (images[i].permute(1,2,0)) (may need .cpu())
+    #     # plt.show()
+
