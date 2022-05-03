@@ -2,6 +2,7 @@ from numpy import gradient
 import torch
 import torch.nn as nn
 import torch.optim as optim
+import matplotlib.pyplot as plt
 from tqdm import tqdm
 
 from data.StartingDataset import StartingDataset
@@ -112,9 +113,9 @@ def evaluate(val_loader, model, loss_fn, device):
     classes = ["Cassava Bacterial Blight (CBB)", "Cassava Brown Streak Disease (CBSD)",
                "Cassava Green Mottle (CGM)", "Cassava Mosaic Disease (CMD)",
                "Healthy"]
-    # for i in range(2):
-    #     # print("Prediction: ") #smth like classes[predictions[i]]
-    #     # print("Label: ") #smth like classes[labels[i]]
-    #     # smth like plt.imshow (images[i].permute(1,2,0)) (may need .cpu())
-    #     # plt.show()
+    for i in range(2):
+        print("Prediction: ", classes[predictions[i]])
+        print("Label: ", classes[labels[i]])
+        plt.imshow(images[i].cpu().permute(1,2,0))
+        plt.show()
 
