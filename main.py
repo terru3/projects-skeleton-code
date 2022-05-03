@@ -3,8 +3,8 @@ import constants
 import matplotlib.pyplot as plt
 import torch
 import torch.nn as nn
-from StartingDataset import StartingDataset
-from StartingNetwork import StartingNetwork
+from data.StartingDataset import StartingDataset
+from networks.StartingNetwork import StartingNetwork
 from starting_train import starting_train
 
 def main():
