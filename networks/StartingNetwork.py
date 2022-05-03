@@ -13,12 +13,13 @@ class StartingNetwork(torch.nn.Module):
         self.conv3 = nn.Conv2d(12, 24, kernel_size=5)
         self.pool3 = nn.MaxPool2d(2, 2)
         self.conv4 = nn.Conv2d(24, 24, kernel_size=5)
-        self.pool4 = nn.MaxPool2d(2, 2)
+        self.pool4 = nn.MaxPool2d(1)
         self.flatten = nn.Flatten()
-        self.fc1 = nn.Linear(2400, 5)
+        self.fc1 = nn.Linear(1176, 5)
         # self.bn = nn.BatchNorm2d(???)
         # to-do: calculate input size after pooling after each layer, pass as parameter
         # then add to forward (at the end after pooling)
+        # should be 6 after 1st conv+pool, 12, then 24 and 24
         self.relu = nn.ReLU()
 
     def forward(self, x):
@@ -41,12 +42,12 @@ class StartingNetwork(torch.nn.Module):
         nn.Conv2d(12, 24, kernel_size = 5),
         nn.MaxPool2d(2, 2), 
         nn.Conv2d(24, 24, kernel_size = 5),
-        nn.MaxPool2d(2, 2),
+        nn.MaxPool2d(1),
         nn.Flatten()
     )
 
-
-    input = torch.randn(16, 3, 224, 224)
+    input = torch.randn(16, 3, 120, 120)
+    # note image is now 120x120
     output = test(input)
     print(output.size())
 '''
