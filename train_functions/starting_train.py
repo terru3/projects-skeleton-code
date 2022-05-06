@@ -93,13 +93,16 @@ def evaluate(val_loader, model, loss_fn, device):
 
     """
 
+    print("print debugging lol")
+        
     # Set model to evaluate mode
     model.eval()
     
+    print("print debugging two")
+    
     # Pass model to GPU
     model = model.to(device)
-    
-    print("print debugging lol")
+   
 
     correct_num = 0
     total_num = 0
