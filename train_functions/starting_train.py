@@ -44,6 +44,12 @@ def starting_train(train_dataset, val_dataset, model, hyperparameters, n_eval, d
     # inside forward(): x = self.dropout(x)
 
     loss_fn = nn.CrossEntropyLoss()
+    
+    my_transforms = transforms.Compose([
+        transforms.GaussianBlur(kernel_size = (5, 9), sigma = (0.1, 0.2)),
+        transforms.RandomHorizontalFlip(p=0.5),
+        transforms.RandomVerticalFlip(p=0.5),
+    ])
 
     step = 0
     for epoch in range(epochs):
@@ -58,6 +64,9 @@ def starting_train(train_dataset, val_dataset, model, hyperparameters, n_eval, d
             # Move to GPU
             images = images.to(device)
             labels = labels.to(device)
+            
+            # Apply transforms
+            images = my_transforms(images)
 
             # Forward propagation
             outputs = model(images)
