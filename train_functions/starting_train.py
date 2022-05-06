@@ -98,6 +98,8 @@ def evaluate(val_loader, model, loss_fn, device):
     
     # Pass model to GPU
     model = model.to(device)
+    
+    print("print debugging lol")
 
     correct_num = 0
     total_num = 0
