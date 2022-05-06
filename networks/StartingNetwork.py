@@ -6,13 +6,13 @@ class StartingNetwork(torch.nn.Module):
 
     def __init__(self):
         super().__init__()
-        self.conv1 = nn.Conv2d(3, 6, kernel_size=5)
+        self.conv1 = nn.Conv2d(3, 6, kernel_size=5, bias=False)
         self.pool1 = nn.MaxPool2d(2, 2)
         self.bn1 = nn.BatchNorm2d(6)
-        self.conv2 = nn.Conv2d(6, 12, kernel_size=5)
+        self.conv2 = nn.Conv2d(6, 12, kernel_size=5, bias=False)
         self.pool2 = nn.MaxPool2d(2, 2)
         self.bn2 = nn.BatchNorm2d(12)
-        self.conv3 = nn.Conv2d(12, 24, kernel_size=5)
+        self.conv3 = nn.Conv2d(12, 24, kernel_size=5, bias=False)
         self.pool3 = nn.MaxPool2d(2, 2)
         self.bn3 = nn.BatchNorm2d(24)
         self.conv4 = nn.Conv2d(24, 24, kernel_size=5)
