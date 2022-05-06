@@ -37,7 +37,7 @@ def starting_train(train_dataset, val_dataset, model, hyperparameters, n_eval, d
     )
 
     # Initalize optimizer and loss function
-    optimizer = optim.Adam(model.parameters(), lr=0.001)
+    optimizer = optim.AdamW(model.parameters(), lr=0.001)
 
     # can add weight_decay=0.01 as parameter for example—L2
     # in network: self.dropout = nn.Dropout(p=0.2) for dropout
