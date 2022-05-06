@@ -84,6 +84,7 @@ def starting_train(train_dataset, val_dataset, model, hyperparameters, n_eval, d
             """""
 
         print('Epoch: ', epoch + 1, 'Loss: ', loss.item())  # print loss of the last batch for each epoch
+        print("print deb")
         # testing the evaluate function for now
         evaluate(val_loader, model, loss_fn, device)
 
