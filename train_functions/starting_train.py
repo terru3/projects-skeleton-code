@@ -56,8 +56,8 @@ def starting_train(train_dataset, val_dataset, model, hyperparameters, n_eval, d
             images, labels = batch
 
             # Move to GPU
-            images.to(device)
-            labels.to(device)
+            images = images.to(device)
+            labels = labels.to(device)
 
             # Forward propagation
             outputs = model(images)
