@@ -84,7 +84,7 @@ def starting_train(train_dataset, val_dataset, model, hyperparameters, n_eval, d
             """""
 
         print('Epoch: ', epoch + 1, 'Loss: ', loss.item())  # print loss of the last batch for each epoch
-        print("print deb")
+
         # testing the evaluate function for now
         evaluate(val_loader, model, loss_fn, device)
 
@@ -93,13 +93,9 @@ def evaluate(val_loader, model, loss_fn, device):
     Computes the loss and accuracy of a model on the validation dataset.
 
     """
-
-    print("print debugging lol")
         
     # Set model to evaluate mode
     model.eval()
-    
-    print("print debugging two")
     
     # Pass model to GPU
     model = model.to(device)
