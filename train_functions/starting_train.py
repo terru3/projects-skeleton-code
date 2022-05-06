@@ -102,8 +102,8 @@ def evaluate(val_loader, model, loss_fn, device):
         images, labels = batch
 
         # Passing to GPU
-        images.to(device)
-        labels.to(device)
+        images = images.to(device)
+        labels = labels.to(device)
 
         predictions = model(images).argmax(axis=1)
   # output has row number of batch_size, and col number 1 (reduced from 5)
