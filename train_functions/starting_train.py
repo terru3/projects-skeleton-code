@@ -21,6 +21,9 @@ def starting_train(train_dataset, val_dataset, model, hyperparameters, n_eval, d
     """
     # Set model to train mode
     model.train()
+    
+    # Move model to GPU
+    model.to(device)
 
     # Get keyword arguments
     batch_size, epochs = hyperparameters["batch_size"], hyperparameters["epochs"]
