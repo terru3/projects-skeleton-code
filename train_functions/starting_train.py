@@ -23,7 +23,7 @@ def starting_train(train_dataset, val_dataset, model, hyperparameters, n_eval, d
     model.train()
     
     # Move model to GPU
-    model.to(device)
+    model = model.to(device)
 
     # Get keyword arguments
     batch_size, epochs = hyperparameters["batch_size"], hyperparameters["epochs"]
@@ -95,6 +95,9 @@ def evaluate(val_loader, model, loss_fn, device):
 
     # Set model to evaluate mode
     model.eval()
+    
+    # Pass model to GPU
+    model = model.to(device)
 
     correct_num = 0
     total_num = 0
