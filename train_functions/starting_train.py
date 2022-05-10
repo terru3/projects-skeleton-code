@@ -4,6 +4,7 @@ import torch.nn as nn
 import torch.optim as optim
 import matplotlib.pyplot as plt
 from tqdm import tqdm
+from torch.utils.tensorboard import SummaryWriter
 
 from data.StartingDataset import StartingDataset
 from networks.StartingNetwork import StartingNetwork
@@ -49,9 +50,11 @@ def starting_train(train_dataset, val_dataset, model, hyperparameters, n_eval, d
         transforms.GaussianBlur(kernel_size = (5, 9), sigma = (0.1, 0.2)),
         transforms.RandomHorizontalFlip(p=0.5),
         transforms.RandomVerticalFlip(p=0.5),
+        transforms.RandomRotation(degrees=(0, 180))
     ])
 
     step = 0
+    writer = SummaryWriter()
     for epoch in range(epochs):
         print(f"Epoch {epoch + 1} of {epochs}")
 
@@ -78,9 +81,9 @@ def starting_train(train_dataset, val_dataset, model, hyperparameters, n_eval, d
             optimizer.zero_grad()
 
             # Periodically evaluate our model + log to Tensorboard
-            """""
-            if step % n_eval == 0:
+            if step % n_eval == 0 and step > 0:
                 # TODO:
+                writer.add_scalar("Training loss", loss.item(), epoch + 1)
                 # Compute training loss and accuracy.
                 # Log the results to Tensorboard.
 
@@ -88,16 +91,18 @@ def starting_train(train_dataset, val_dataset, model, hyperparameters, n_eval, d
                 # Compute validation loss and accuracy.
                 # Log the results to Tensorboard.
                 # Don't forget to turn off gradient calculations!
-                evaluate(val_loader, model, loss_fn, device)
+                writer.add_scalar("Validation accuracy", evaluate(val_loader, model, loss_fn, device)[0], epoch + 1)
             step += 1
-            """""
 
         print('Epoch: ', epoch + 1, 'Loss: ', loss.item())  # print loss of the last batch for each epoch
 
         # testing the evaluate function for now
-        evaluate(val_loader, model, loss_fn, device)
+        evaluate(val_loader, model, loss_fn, device, visualize=True)
+        
+        writer.flush()
+    writer.close()
 
-def evaluate(val_loader, model, loss_fn, device):
+def evaluate(val_loader, model, loss_fn, device, visualize=False):
     """
     Computes the loss and accuracy of a model on the validation dataset.
 
@@ -130,9 +135,14 @@ def evaluate(val_loader, model, loss_fn, device):
     classes = ["Cassava Bacterial Blight (CBB)", "Cassava Brown Streak Disease (CBSD)",
                "Cassava Green Mottle (CGM)", "Cassava Mosaic Disease (CMD)",
                "Healthy"]
-    for i in range(2):
-        print("Prediction: ", classes[predictions[i]])
-        print("Label: ", classes[labels[i]])
-        plt.imshow(images[i].cpu().permute(1,2,0))
-        plt.show()
+    if visualize:
+        for i in range(2):
+            print("Prediction: ", classes[predictions[i]])
+            print("Label: ", classes[labels[i]])
+            plt.imshow(images[i].cpu().permute(1,2,0))
+            plt.show()
+            
+    performance_summary = [100*(correct_num / total_num)]
+    # to-do: also add validation loss! how to compute?
+    return performance_summary
 
