@@ -6,8 +6,8 @@ import matplotlib.pyplot as plt
 from tqdm import tqdm
 from torch.utils.tensorboard import SummaryWriter
 
-from StartingDataset import StartingDataset
-from StartingNetwork import StartingNetwork
+from data.StartingDataset import StartingDataset
+from networks.StartingNetwork import StartingNetwork
 
 def starting_train(train_data, val_data,
                    train_dataset, val_dataset,
