@@ -6,7 +6,7 @@ import torch.nn as nn
 import numpy as np
 from data.StartingDataset import StartingDataset
 from networks.StartingNetwork import StartingNetwork
-from starting_train.starting_train import starting_train
+from train_functions.starting_train import starting_train
 
 def main():
     # Get command line arguments
